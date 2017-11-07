@@ -7,13 +7,18 @@ const state = {
     count: 1
 }
 const mutations = {
-    add(state) {
-        state.count += 1;
+    add(state, n) {
+        state.count += n;
     },
     reduce(state) {
         state.count -= 1;
     }
 }
+const getters = {
+    count: function (state) {
+        return state.count += 100;
+    }
+}
 export default new Vuex.Store({
-    state, mutations
+    state, mutations, getters
 })
