@@ -13,6 +13,10 @@ const mutations = {
     },
     reduce(state) {
         state.count -= 1;
+    },
+    priceAll(state, payload) {
+        console.log('payload:');
+        console.log(payload);
     }
 }
 const getters = {

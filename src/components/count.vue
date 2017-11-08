@@ -40,10 +40,15 @@ export default {
       console.log("action");
     },
     mutationTest() {
-      this.add(1);
+      // setTimeout(() => {
+      //   this.add(1);
+      // }, 1000);
+      store.commit({ type: "priceAll", price: 10, count: 3 });
       console.log("mutations");
+      this.priceAll([3, 4]);
+      this.priceAll({ 1: "kk", 2: "909" });
     },
-    ...mapMutations(["add", "reduce"]),
+    ...mapMutations(["add", "reduce", "priceAll"]),
     ...mapActions(["addAction", "reduceAction"])
   },
   store
