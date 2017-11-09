@@ -12,6 +12,8 @@
   <p>mapActions获取：</p>
   <button @click="actionTest">+</button>
   <button @click="reduceAction">-</button>
+
+  <button @click="promise">promise测试</button>
 </div>
  
 </template>
@@ -21,8 +23,15 @@ import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      msg: "Hello Vuex"
+      msg: "Hello Vuex",
+      pro: null
     };
+  },
+  mounted() {
+    let p = new Promise(function(resolve, reject) {
+      setTimeout(resolve, 2000, "done");
+    });
+    this.pro = p;
   },
   computed: {
     ...mapState(["count"])
@@ -35,6 +44,15 @@ export default {
   // computed: mapState({ count: state => state.count }),
   // computed: mapState(["count"]),
   methods: {
+    promise() {
+      let p = new Promise(function(resolve, reject) {
+        setTimeout(resolve, 2000, "done");
+      });
+      p.then(v => {
+        // console.log(v);
+        alert(v);
+      });
+    },
     actionTest() {
       this.addAction(100);
       console.log("action");
